@@ -6,7 +6,7 @@
  */
 function calculateSimpleRevenue(purchase, _product) {
    const discount = 1 - (purchase.discount /100);
-   return _product.sale_price * purchase.quantity * discount;
+   return purchase.sale_price * purchase.quantity * discount;
 }
 
 /**
@@ -131,9 +131,10 @@ function analyzeSalesData(data, options) {
             }
             const index = seller.products_sold.findIndex(prod => prod.sku == item.sku);
             seller.products_sold[index].quantity += item.quantity;
-
+            
             const cost = product.purchase_price * item.quantity;
             console.log(item);
+            console.log(product);
             seller.revenue += calculateRevenue(item, product);
             seller.profit += calculateRevenue(item, product) - cost;
 /**
