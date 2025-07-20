@@ -135,7 +135,7 @@ function analyzeSalesData(data, options) {
             const cost = product.purchase_price * item.quantity;
             console.log(item);
             console.log(product);
-            seller.revenue += calculateRevenue(item, product);
+            seller.revenue += +calculateRevenue(item, product).toFixed(2);
             seller.profit += calculateRevenue(item, product) - cost;
 /**
  * Функция для расчета 
